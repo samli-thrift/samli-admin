@@ -1,0 +1,290 @@
+@use './vars' as *;
+
+
+@mixin df($j:normal,$a:normal, $fl:row, $g:0){
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+  flex-flow: $fl;
+  gap: $g;
+}
+
+@mixin dg($c:auto-fit, $min:0px, $max:1fr, $g:0){
+  display: grid;
+  grid-template-columns: repeat($c, minmax($min, $max));
+  gap: $g;
+}
+
+@mixin btn($c: var(--dark), $bg: var(--acc), $hc: var(--btn-hover), $hbg: var(--acc-100), $hbor: var(--text)) {
+  cursor: pointer;
+  background: $bg;
+  color: $c;
+  outline: transparent;
+  border: 1px solid $c;
+  border-radius: 22px;
+  padding: 12px 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  font: 700 .8rem 'jetbrains-mono';
+
+  letter-spacing: 0.08em;
+  transition: all .3s;
+  @include df(center, center, row, 10px);
+
+  svg {
+    path {
+      fill: $c;
+    }
+  }
+  &:hover {
+    background: $hbg;
+    border-color: $hbor;
+    color: $hc;
+    svg {
+      path {
+        fill: $hc;
+      }
+    }
+  }
+}
+
+
+@mixin error-msg() {
+  font-weight: bold;
+  font-size: 13px;
+  opacity: 0;
+  height: 0;
+  transition: all 0.3s;
+  @include df(normal, center, row, 10px);
+  &::before {
+    content: "!";
+    border: 1px solid;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgba(var(--error-rgb), 0.1);
+    @include df(center, center);
+  }
+}
+
+@mixin empty {
+  padding: 20px;
+  height: 100%;
+  border-radius: 10px;
+  text-align: center;
+  @include df(center, center, column, 20px);
+  i {
+    background: var(--cream);
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    font-size: 3rem;
+    border-radius: 50%;
+    @include df(center, center);
+  }
+}
+
+
+
+@mixin dash($side:bottom, $color: var(--acc)) {
+  margin-bottom: 10px;
+  position: relative;
+  @include df(center, center, column);
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    border: 2px solid var(--dark);
+    border-radius: 10px;
+    background: $color;
+    transform: translateY(10px);
+  }
+  @if ($side == left) {
+    margin: 0 0 0 20px;
+    @include df(normal, center, row);
+    &::after {
+      transform: translate(-20px,0);
+      left: 0;
+      height: 100%;
+      width: 5px;
+      border: 2px solid var(--dark);
+    }
+  } @else if ($side == right) {
+    margin: 0 20px 0 0;
+    @include df(normal, center, row);
+    &::after {
+      transform: translate(-20px,0);
+      right: 0;
+      height: 100%;
+      width: 5px;
+      border: 2px solid var(--dark);
+    }
+  }
+}
+
+// New theme
+@mixin gradient-bg {
+  background: linear-gradient(135deg, var(--acc-200), transparent 38%), var(--bg) !important;
+}
+@mixin eyebrow {
+  color: var(--acc);
+  font: 700 .72rem 'jetbrains-mono';
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+@mixin card-shadow {
+  border: 1px solid var(--acc);
+  background: color-mix(in srgb, var(--bg) 92%, var(--acc-200));
+  padding: 26px;
+  min-width: 0;
+  box-shadow: 7px 7px 0 var(--acc-300);
+}
+@mixin focus-shadow {
+  border-color: var(--acc);
+  box-shadow: 0 0 0 3px var(--acc-300);
+}
+@mixin label-styling {
+  position: absolute;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  left: 8px;
+  transform: translateY(-50%);
+  background-color: var(--bg);
+  padding: 0 8px;
+
+  margin-bottom: 8px;
+  font: 700 .75rem 'outfit';
+  // text-transform: uppercase;
+}
+
+@mixin input-unit {
+  padding: 0 15px;
+  background: var(--cream);
+  border: 1px solid var(--text);
+  border-left: none;
+  color: var(--medium);
+  transition: all .3s;
+  @include df(center, center);
+
+  button {
+    text-transform: capitalize;
+    background: transparent;
+    color: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+    outline: transparent;
+  }
+}
+
+@mixin input {
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 0;
+  outline: transparent;
+  color: var(--text);
+  font-family: 'jetbrains-mono';
+  transition: all .3s;
+  @include df(normal, normal, row);
+
+  background: transparent;
+  color: var(--text);
+  padding: 13px 14px;
+  outline: none;
+
+  &::picker-icon, &::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  &:focus {
+    border-color: var(--acc);
+    box-shadow: 0 0 0 3px var(--acc-100);
+
+    ~ label {
+      color: var(--acc);
+    }
+    ~ .input_unit {
+      color: var(--acc);
+      font-weight: 600;
+      background: var(--acc-100);
+      @include focus-shadow;
+    }
+    &::picker-icon, &::-webkit-inner-spin-button {
+      color: var(--acc);
+    }
+  }
+}
+
+@mixin result-list($addShadow: 'yes') {
+  width: 100%;
+  padding: 20px var(--sp);
+
+  .container {
+    width: 100%;
+    @include card-shadow;
+    & {
+      padding: 0;
+    }
+  }
+
+  .summary {
+    margin: 0 18px 18px;
+    padding: 12px 14px;
+    border: 1px solid var(--acc-200);
+    @include df(space-between, center, row, 16px);
+
+    span {
+      color: var(--medium);
+      text-transform: capitalize;
+    }
+
+    strong {
+      color: var(--acc);
+      font-family: 'cascadia-code';
+      white-space: nowrap;
+    }
+  }
+
+  .empty {
+    min-height: 220px;
+    padding: 30px;
+    text-align: center;
+    color: var(--medium);
+    @include df(center, center, column, 10px);
+
+    i {
+      color: var(--acc-300);
+      font-size: 2.5rem;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text);
+      font-weight: 700;
+    }
+  }
+}
+
+@mixin h2($c: var(--text), $bg:transparent, $shadow: var(--acc-300)) {
+  font-size: clamp(2rem, 5dvw, 2.5rem);
+  @include dash;
+}
+
+@mixin scroll-grid {
+  max-width: 100%;
+  max-width: 100%;
+  overflow-x: scroll;
+  @include df(normal, normal, row, 16px);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+

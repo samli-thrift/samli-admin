@@ -1,0 +1,90 @@
+
+
+// Copy your existing util folder (vars, mixins, page_mixins, index) to src/scss/util/
+@use './util/' as *;
+
+body { margin: 0; background: var(--bg); color: var(--text); font-family: 'open-sans', sans-serif; }
+
+.Admin {
+  min-height: 100dvh;
+  @include df(normal, normal, column);
+  @include gradient-bg;
+
+  .btn_link {
+    @include btn;
+    &.ghost { @include btn(var(--text), transparent, var(--text), var(--acc-100), var(--text)); }
+    &.danger { color: var(--error); border-color: var(--error); }
+    &:disabled { opacity: .45; cursor: not-allowed; }
+  }
+
+  label, .lbl {
+    @include df(normal, normal, column, 6px);
+    font: 700 .75rem 'outfit';
+  }
+  input, select, textarea { @include input; }
+  textarea { resize: vertical; }
+}
+
+.ad_bar {
+  padding: 16px var(--sp);
+  border-bottom: 1px solid var(--acc-300);
+  @include df(space-between, center, row, 16px);
+}
+
+.ad_section {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 30px var(--sp) 80px;
+  @include df(normal, normal, column, 22px);
+  h2 { @include h2; }
+}
+
+.ad_head { @include df(space-between, center, row wrap, 16px); }
+
+.ad_card { @include card-shadow; border-radius: 16px; }
+
+.ad_stats {
+  list-style: none; margin: 0; padding: 0;
+  @include dg(auto-fit, 140px, 1fr, 16px);
+  li { @include card-shadow; padding: 14px; @include df(normal, normal, column, 4px); }
+  strong { font: 700 1.8rem 'cascadia-code'; color: var(--acc); }
+  span { color: var(--medium); font-size: .85rem; }
+}
+
+.ad_list {
+  list-style: none; margin: 0; padding: 0;
+  @include df(normal, normal, column, 18px);
+  li { @include df(normal, center, row wrap, 16px); }
+  img { width: 72px; height: 90px; object-fit: cover; border-radius: 10px; background: var(--cream); }
+  .info { flex: 1; min-width: 180px; @include df(normal, flex-start, column, 4px); span { color: var(--medium); font-size: .85rem; } }
+  .sold { color: var(--error); font: 700 .72rem 'jetbrains-mono'; text-transform: uppercase; }
+  .acts { @include df(normal, center, row wrap, 8px); }
+}
+
+.ad_empty { @include empty; }
+
+.ad_form {
+  @include dg(auto-fit, 240px, 1fr, 18px);
+  .wide { grid-column: 1 / -1; }
+}
+
+.ad_thumbs {
+  list-style: none; margin: 8px 0; padding: 0;
+  @include df(normal, normal, row wrap, 10px);
+  li { position: relative; }
+  img { width: 80px; height: 80px; object-fit: cover; border-radius: 10px; border: 1px solid var(--acc); }
+  button {
+    position: absolute; top: -6px; right: -6px; width: 22px; height: 22px;
+    border-radius: 50%; border: none; background: var(--error); color: #fff; cursor: pointer;
+  }
+}
+
+.ad_actions { @include df(normal, center, row wrap, 14px); }
+.ad_error { color: var(--error); font-weight: 700; margin: 0; }
+
+.ad_login {
+  @include df(center, center, column);
+  padding: var(--sp);
+  .ad_card { width: min(420px, 100%); @include df(normal, normal, column, 16px); h1 { margin: 0; } }
+}

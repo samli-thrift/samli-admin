@@ -1,0 +1,50 @@
+@use './vars' as *;
+@use './mixins' as *;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: color .3s;
+}
+
+:root {
+  interpolate-size: allow-keywords;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'outfit','redaction', Monospace;
+  font-size: 1rem;
+
+  h1,h2,h3,h4 {
+    font-family: "redaction";
+  }
+  main {
+    min-height: 70dvh;
+  }
+}
+
+
+.special {
+  background-color: var(--acc);
+  background-clip: text;
+  padding: 0 10px;
+  -webkit-text-stroke: 1px var(--text);
+  color: transparent;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+  & * {
+    transition: color .3s;
+  }
+  &.dark-mode {
+    .special {
+      -webkit-text-stroke-color: var(--acc);
+      -webkit-text-fill-color: var(--bg);
+    }
+  }
+}

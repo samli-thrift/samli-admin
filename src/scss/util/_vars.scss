@@ -1,0 +1,107 @@
+
+@font-face {
+  font-family: 'redaction';
+  src: url("../../assets/fonts/redaction.ttf");
+}
+@font-face {
+  font-family: 'cascadia-code';
+  src: url("../../assets/fonts/cascadia-code.ttf");
+}
+@font-face {
+  font-family: 'outfit';
+  src: url("../../assets/fonts/outfit.ttf");
+}
+@font-face {
+  font-family: 'space-grotesk';
+  src: url("../../assets/fonts/space-grotesk.ttf");
+}
+@font-face {
+  font-family: 'jetbrains-mono';
+  src: url("../../assets/fonts/jetbrains-mono.ttf");
+}
+@font-face {
+  font-family: 'bilbo-swash-caps';
+  src: url("../../assets/fonts/bilbo-swash-caps.ttf");
+}
+@font-face {
+  font-family: 'smooch-sans';
+  src: url("../../assets/fonts/smooch-sans.ttf");
+}
+@font-face {
+  font-family: 'open-sans';
+  src: url("../../assets/fonts/open-sans.ttf");
+}
+@font-face {
+  font-family: 'league-spartan';
+  src: url("../../assets/fonts/league-spartan.ttf");
+}
+
+$mini-tab: 500px;
+$tab: 700px;
+$big-tab: 900px;
+$desktop: 1100px;
+
+$green: #2f6f4e;
+$green-bg: rgba(#2f6f4e, .18);
+$cream: #fffdf5;
+$cream-200: rgba($cream, .1);
+
+:root {
+  --sp: clamp(8px, 5dvw, 10%);
+  --text: #17231b;
+  --text-rgb: 23, 35, 27;
+  --inv-text: #fffdf5;
+  --bg: #fff;
+  --cream: #ffffc0;
+  --cream-100: rgba(#ffffc0, 0.1);
+  --cream-500: rgba(#ffffc0, 0.5);
+  --dark-cream: #26352b;
+  --medium: #5e6c63;
+  --tl: #147d80;
+  
+  --error: #b42318;
+  --error-rgb: 180, 35, 24;
+  --correct: #9a6700;
+  --active: #1769aa;
+
+  // Permanent Single Colors
+  --dark: #2c1f02;
+  --light: #ffffc0;
+  
+  --btn-hover: var(--dark-acc); 
+
+  // Accent color
+  --acc: rgb(245, 197, 24);
+  --dark-acc: rgb(117, 88, 14);
+  --light-acc: rgb(245, 205, 104);
+  --acc-100: rgba(245, 197, 24, 0.1);
+  --acc-200: rgba(245, 197, 24, 0.2);
+  --acc-300: rgba(245, 197, 24, 0.3);
+  --acc-400: rgba(245, 197, 24, 0.4);
+  --acc-500: rgba(245, 197, 24, .5);
+  --acc-600: rgba(245, 197, 24, 0.6);
+  --acc-700: rgba(245, 197, 24, 0.7);
+  --acc-800: rgba(245, 197, 24, 0.8);
+  --acc-900: rgba(245, 197, 24, 0.9);
+
+  --max-w: 1200px;
+}
+
+html.dark-mode {
+  --text: #edf4ed;
+  --text-rgb: 237, 244, 237;
+  --inv-text: #000;
+  --bg: #101914;
+  --cream: #1d2a22;
+  --cream-100: rgba(237, 244, 237, 0.1);
+  --cream-500: rgba(237, 244, 237, 0.5);
+  --dark-cream: #d6e2d7;
+  --medium: #a8b8ac;
+  --error: #ff8a80;
+  --error-rgb: 255, 138, 128;
+  --correct: #e5b94c;
+  --active: #80bfff;
+  
+  --btn-hover: var(--acc);
+}
+

@@ -1,0 +1,3 @@
+{
+  "run": "cd \"/home/samli_admin\" && quarks run"
+}
