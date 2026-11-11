@@ -27,6 +27,10 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: 'open-
   padding: 16px var(--sp);
   border-bottom: 1px solid var(--acc-300);
   @include df(space-between, center, row, 16px);
+  > strong {
+    font-family: 'bilbo-swash-caps';
+    font-size: 1.5rem;
+  }
 }
 
 .ad_section {
@@ -35,7 +39,12 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: 'open-
   margin: 0 auto;
   padding: 30px var(--sp) 80px;
   @include df(normal, normal, column, 22px);
-  h2 { @include h2; }
+  h2 { 
+    @include h2; 
+    &::after {
+      display: none;
+    }
+  }
 }
 
 .ad_head { @include df(space-between, center, row wrap, 16px); }

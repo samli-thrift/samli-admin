@@ -23,7 +23,7 @@ export default function App() {
   return (
     <main className="Admin">
       <header className="ad_bar">
-        <strong>SamLi Thrift · Admin</strong>
+        <strong>SamLi Thrift · <span>Admin</span></strong>
         <button className="btn_link ghost" onClick={() => supabase.auth.signOut()}>
           Log out
         </button>
