@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase";
 
@@ -53,7 +50,7 @@ export default function Dashboard({ onEdit }) {
               <img src={p.image} alt="" />
               <div className="info">
                 <strong>{p.name}</strong>
-                <span>{naira(p.price)} · {p.size || "—"} · {p.condition}</span>
+                <span>{naira(p.price)} · {p.type && p.type !== "piece" ? `${p.type} · ${p.pieces_count} pcs` : p.size || "—"} · {p.condition}</span>
                 {p.sold_out && <em className="sold">Sold out</em>}
               </div>
               <div className="acts">

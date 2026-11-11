@@ -1,5 +1,3 @@
-
-
 // Copy your existing util folder (vars, mixins, page_mixins, index) to src/scss/util/
 @use './util/' as *;
 
@@ -87,4 +85,32 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: 'open-
   @include df(center, center, column);
   padding: var(--sp);
   .ad_card { width: min(420px, 100%); @include df(normal, normal, column, 16px); h1 { margin: 0; } }
+}
+
+.ad_chips {
+  @include df(normal, normal, row wrap, 8px);
+  margin: 8px 0;
+  button {
+    cursor: pointer;
+    padding: 6px 14px;
+    border: 1px solid var(--text);
+    border-radius: 22px;
+    background: transparent;
+    color: var(--text);
+    font: 700 .75rem 'jetbrains-mono';
+    text-transform: capitalize;
+    transition: all .3s;
+    &:hover { background: var(--acc-100); }
+    &.on { background: var(--acc); border-color: var(--text); }
+  }
+}
+
+.ad_addtag {
+  @include df(normal, stretch, row, 10px);
+  input { max-width: 260px; }
+}
+
+.ad_variant {
+  @include dg(auto-fit, 110px, 1fr, 10px);
+  margin: 8px 0;
 }
